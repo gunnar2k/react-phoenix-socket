@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Channels from './Channels';
-
 export default class Phoenix extends Component {
   static propTypes = {
     channel: PropTypes.string.isRequired,
@@ -39,14 +37,18 @@ export default class Phoenix extends Component {
   }
 
   bindEvent(channelName, event) {
-    const channel = Phoenix.channels[channelName] || Phoenix.socket.channel(channelName);
+    let channel = Phoenix.channels[channelName];
+    if (!channel) {
+      channel = Phoenix.socket.channel(channelName);
+      Phoenix.channels[channelName] = channel;
+    }
     channel.on(event, this.props.onUpdate);
   }
 
   unbindEvent(channelName, event) {
     const channel = Phoenix.channels[channelName];
     if (channel) {
-      channel.leave();
+      channel.off(event);
     }
   }
 
