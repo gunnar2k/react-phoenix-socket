@@ -3,20 +3,19 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 let comp, props, socketMock;
-const channel = 'foo';
+const channelName = 'foo';
 const event = 'test-event';
 
 describe('Phoenix', () => {
   beforeEach(() => {
-    const channelMock = jest.fn();
-    channelMock.mockReturnValue({
-      on: jest.fn(),
-    });
     socketMock = {
-      channel: channelMock,
-    };
+      channel: jest.fn().mockReturnValue({
+        on: jest.fn(),
+        off: jest.fn(),
+      }),
+    },
     props = {
-      channel,
+      channel: channelName,
       event,
       onUpdate: jest.fn(),
     };
@@ -40,6 +39,18 @@ describe('Phoenix', () => {
     it('renders nothing', () => {
       comp = shallow(<Phoenix {...props} />);
       expect(comp.isEmptyRender()).toBeTruthy();
+    });
+
+    describe('on initialisation', () => {
+      it('calls Phoenix.channels to get a pre-existing channel', () => {
+        comp = shallow(<Phoenix {...props} />);
+        expect(Phoenix.channels).toBeCalledWith(channelName);
+      });
+
+      it('calls socket.channel if Pusher.channels does not return a channel', () => {
+        comp = shallow(<Phoenix {...props} />);
+        expect(socketMock.channel).toBeCalledWith(channelName);
+      });
     });
   });
 });
