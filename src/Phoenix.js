@@ -11,7 +11,7 @@ export default class Phoenix extends Component {
   };
 
   static socket = null;
-  static channels = new Channels();
+  static channels = {};
 
   constructor(props) {
     super(props);
@@ -38,23 +38,16 @@ export default class Phoenix extends Component {
     this.unbindEvent(channel, event);
   }
 
-  bindEvent(channel, event) {
-    // const shoverChannel = Shover.shoverClient.findChannel(channel) || Shover.shoverClient.join(channel);
-    // shoverChannel.bind(event, this.props.onUpdate);
-    // if (Shover.channels[channel] === undefined) Shover.channels[channel] = 0;
-    // Shover.channels[channel]++;
+  bindEvent(channelName, event) {
+    const channel = Phoenix.channels[channelName] || Phoenix.socket.channel(channelName);
+    channel.on(event, this.props.onUpdate);
   }
 
-  unbindEvent(channel, event) {
-    // const shoverChannel = Shover.shoverClient.findChannel(channel);
-    // if (shoverChannel) {
-    //   shoverChannel.unbind(event);
-    // }
-    // Shover.channels[channel]--;
-    // if (Shover.channels[channel] <= 0) {
-    //   delete Shover.channels[channel];
-    //   Shover.shoverClient.leave(channel);
-    // }
+  unbindEvent(channelName, event) {
+    const channel = Phoenix.channels[channelName];
+    if (channel) {
+      channel.leave();
+    }
   }
 
   render() {

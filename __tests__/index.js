@@ -8,7 +8,13 @@ const event = 'test-event';
 
 describe('Phoenix', () => {
   beforeEach(() => {
-    socketMock = {}
+    const channelMock = jest.fn();
+    channelMock.mockReturnValue({
+      on: jest.fn(),
+    });
+    socketMock = {
+      channel: channelMock,
+    };
     props = {
       channel,
       event,
@@ -29,7 +35,6 @@ describe('Phoenix', () => {
 
     afterEach(() => {
       comp.unmount();
-      Phoenix.channels = new Channels();
     });
 
     it('renders nothing', () => {
@@ -37,4 +42,4 @@ describe('Phoenix', () => {
       expect(comp.isEmptyRender()).toBeTruthy();
     });
   });
-})
+});
