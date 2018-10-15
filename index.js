@@ -56,3 +56,7 @@ export default class Phoenix extends Component {
     return null;
   }
 }
+
+export const setPhoenixSocket = (socket) => {
+  Phoenix.socket = socket;
+}

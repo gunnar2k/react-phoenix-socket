@@ -1,4 +1,4 @@
-import Phoenix, { setPhoenixSocket, Channels } from '../src';
+import Phoenix, { setPhoenixSocket, Channels } from '../index.js';
 import { shallow } from 'enzyme';
 import React from 'react';
 
