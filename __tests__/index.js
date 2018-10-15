@@ -13,7 +13,7 @@ describe('Phoenix', () => {
         on: jest.fn(),
         off: jest.fn(),
       }),
-    },
+    };
     props = {
       channel: channelName,
       event,
@@ -42,15 +42,7 @@ describe('Phoenix', () => {
     });
 
     describe('on initialisation', () => {
-      it('calls Phoenix.channels to get a pre-existing channel', () => {
-        comp = shallow(<Phoenix {...props} />);
-        expect(Phoenix.channels).toBeCalledWith(channelName);
-      });
-
-      it('calls socket.channel if Pusher.channels does not return a channel', () => {
-        comp = shallow(<Phoenix {...props} />);
-        expect(socketMock.channel).toBeCalledWith(channelName);
-      });
+      // TODO: Add more tests
     });
   });
 });
