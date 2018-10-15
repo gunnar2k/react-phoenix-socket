@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.setPhoenixSocket = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -96,45 +97,6 @@ Phoenix.propTypes = {
 Phoenix.socket = null;
 Phoenix.channels = {};
 exports.default = Phoenix;
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Phoenix = require('./Phoenix');
-
-Object.defineProperty(exports, 'default', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Phoenix).default;
-  }
-});
-
-var _setPhoenixSocket = require('./setPhoenixSocket');
-
-Object.defineProperty(exports, 'setPhoenixSocket', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_setPhoenixSocket).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _ = require('.');
-
-var _2 = _interopRequireDefault(_);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var setPhoenixSocket = function setPhoenixSocket(socket) {
-  _2.default.socket = socket;
+var setPhoenixSocket = exports.setPhoenixSocket = function setPhoenixSocket(socket) {
+  Phoenix.socket = socket;
 };
-
-exports.default = setPhoenixSocket;
