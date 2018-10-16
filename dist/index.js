@@ -32,6 +32,7 @@ var Phoenix = function (_Component) {
     if (!Phoenix.socket) {
       throw new Error('you must set a socket by calling setPhoenixSocket');
     }
+    Phoenix.socket.connect();
     return _this;
   }
 
