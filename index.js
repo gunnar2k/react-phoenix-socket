@@ -42,6 +42,7 @@ export default class Phoenix extends Component {
     if (!channel) {
       channel = Phoenix.socket.channel(channelName);
       Phoenix.channels[channelName] = channel;
+      channel.join();
     }
     channel.on(event, this.props.onUpdate);
   }
