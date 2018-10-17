@@ -12,7 +12,9 @@ describe('Phoenix', () => {
       channel: jest.fn().mockReturnValue({
         on: jest.fn(),
         off: jest.fn(),
+        join: jest.fn(),
       }),
+      connect: jest.fn(),
     };
     props = {
       channel: channelName,
