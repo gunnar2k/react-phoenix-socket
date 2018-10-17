@@ -1,8 +1,8 @@
 # React Phoenix Component
 
-A wrapper for `phoenix-socket` which makes it super-easy to connect to a Phoenix Channels backend, using React. Heavily inspired by (practically a fork) of [react-pusher](https://github.com/rainforestapp/react-pusher) by [Rainforest QA](https://github.com/rainforestapp). :beers:
+A wrapper for `phoenix-socket` which makes it super-easy to connect to a Phoenix Channels backend, using React. Heavily inspired by (practically a fork) of [react-pusher](https://github.com/rainforestapp/react-pusher) by [Rainforest QA](https://github.com/rainforestapp).
 
-## Installing :wrench:
+## Installing
 
 Get the package from `npm`. To install, run the following command in your terminal:
 
@@ -54,6 +54,5 @@ const SomeList = ({ items }) => (
 
 ## Todo
 
-- Add usage docs
 - Add issues & create waffle board
 - Add more tests
