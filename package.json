@@ -1,6 +1,6 @@
 {
   "name": "react-phoenix-socket",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "babel -o ./dist/index.js ./index.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.0",

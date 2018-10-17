@@ -51,8 +51,3 @@ const SomeList = ({ items }) => (
   </div>
 );
 ```
-
-## Todo
-
-- Add issues & create waffle board
-- Add more tests
